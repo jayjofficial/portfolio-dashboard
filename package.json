@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-dashboard",
+  "version": "1.0.0",
+  "description": "Studio CMS and Convex backend for Janette Amoatemaa Sarfo portfolio",
+  "type": "module",
+  "scripts": {
+    "dev:convex": "npx convex dev",
+    "deploy:convex": "npx convex deploy"
+  },
+  "dependencies": {
+    "convex": "^1.19.0",
+    "jay-s-portfolio": "file:../jay-s-portfolio"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "general": {
+    "brandName": "Janette Amoatemaa Sarfo",
+    "brandMonogram": "JS",
+    "roleTag": "UI/UX Designer · Computer Science Student",
+    "availabilityText": "Available for 2026/2027",
+    "isAvailable": true,
+    "contactEmail": "janette.sarfo.design@gmail.com",
+    "location": "Ghana (GMT)",
+    "timezone": "Africa/Accra",
+    "socials": [
+      { "name": "LinkedIn", "url": "https://linkedin.com" },
+      { "name": "GitHub", "url": "https://github.com" },
+      { "name": "Dribbble", "url": "https://dribbble.com" }
+    ]
+  },
+  "hero": {
+    "badgeText": "UI/UX Designer · Computer Science Student",
+    "headline": "I think deeply about people, systems, and experiences — and craft thoughtful digital products.",
+    "leadText": "Welcome to my personal studio space. I bridge human behavior research with structured computer science principles to build interfaces that feel effortless, respectful, and aesthetically mature.",
+    "portraitImage": "assets/images/janette-portrait.jpg",
+    "floatingBadge": {
+      "subtitle": "Focus Area",
+      "title": "Design Systems & Cognitive Ergonomics"
+    },
+    "metrics": [
+      { "value": "3+", "label": "In-depth Design Systems" },
+      { "value": "15k+", "label": "Students Impacted (UENR Portal)" },
+      { "value": "CS + UX", "label": "Dual Architecture Foundation" }
+    ],
+    "marqueeItems": [
+      "Interaction Architecture",
+      "User Research & Field Studies",
+      "Design Systems & Tokens",
+      "Accessible Academic Systems",
+      "AgriTech Logistics UX",
+      "Bespoke Fashion E-Commerce",
+      "Computer Science Mindset"
+    ]
+  },
+  "about": {
+    "eyebrow": "About The Designer",
+    "title": "Where human empathy meets algorithmic clarity.",
+    "subtitle": "A creative studio grounded in user advocacy and technical feasibility.",
+    "profileBadge": "Creative Profile",
+    "headline": "I design products that honor human attention and solve genuine operational friction.",
+    "bioParagraphs": [
+      "I am Janette Amoatemaa Sarfo — a UI/UX designer and Computer Science student. My practice centers on the intersection of human cognitive patterns, systemic information architecture, and real-world utility.",
+      "Having a technical background in computer science means I don't just hand off pretty mockups. I consider state transitions, component reusability, edge cases, latency implications, and accessibility standards from the very first sketch."
+    ],
+    "values": [
+      {
+        "num": "01",
+        "title": "Intentional Over Trendy",
+        "desc": "Every line, whitespace margin, and color accent exists for cognitive clarity, not aesthetic superficiality."
+      },
+      {
+        "num": "02",
+        "title": "Deep Contextual Empathy",
+        "desc": "Whether examining high-stress university exam anxiety or local farm distribution routes, I ground designs in real human contexts."
+      },
+      {
+        "num": "03",
+        "title": "Feasible & Systematic",
+        "desc": "Design systems constructed with engineering logic: modular tokens, scalable variants, and clean component contracts."
+      }
+    ],
+    "pillars": [
+      {
+        "id": "pillar-cs",
+        "type": "navy",
+        "title": "Computer Science Discipline",
+        "subtitle": "Algorithms, Data Structures & Frontend Systems",
+        "desc": "Understanding algorithmic complexity and browser mechanics allows me to design UI components that are frictionless for engineers to implement and performant on low-bandwidth networks.",
+        "tags": ["Component Architecture", "State Modeling", "Responsive Layouts", "WCAG 2.1 AA"]
+      },
+      {
+        "id": "pillar-ux",
+        "type": "rose",
+        "title": "User Experience Research",
+        "subtitle": "Field Inquiries, Heuristic Audits & Usability Labs",
+        "desc": "Uncovering unspoken user frustrations through qualitative observation, contextual inquiry, and usability testing to validate assumptions prior to pixel-level investment.",
+        "tags": ["Contextual Inquiry", "Information Architecture", "Task Flow Analysis", "A/B Usability Testing"]
+      },
+      {
+        "id": "pillar-craft",
+        "type": "periwinkle",
+        "title": "Interface Craft & Prototyping",
+        "subtitle": "High-Fidelity Systems & Micro-Interactions",
+        "desc": "Crafting polished visual systems with distinct character, rigorous auto-layout structures, interactive micro-states, and design token libraries.",
+        "tags": ["Figma Advanced Autolayout", "Design Tokens", "Interactive Prototypes", "Micro-Animations"]
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "uenr",
+      "name": "UENR Examination Platform",
+      "tagline": "Calming high-stakes anxiety: Redesigning academic assessments for 15,000+ university students with cognitive focus states and zero-data-loss resilience.",
+      "category": "academic",
+      "categoryLabel": "Academic Systems",
+      "domainTag": "Higher Education · Web Platform",
+      "client": "University of Energy and Natural Resources",
+      "role": "Lead UI/UX Designer & Information Architect",
+      "timeline": "6 Months · Academic System Redesign",
+      "image": "assets/images/uenr-exam.jpg",
+      "accentColor": "#2563EB",
+      "paletteDesc": "Academic Clarity System",
+      "palette": [
+        { "name": "Deep Navy", "hex": "#0F1D36" },
+        { "name": "Digital Blue", "hex": "#2563EB" },
+        { "name": "Soft Periwinkle", "hex": "#8D9CCB" },
+        { "name": "Clean White", "hex": "#FFFFFF" }
+      ],
+      "stats": [
+        { "label": "Assessment Completion Rate", "value": "99.8%" },
+        { "label": "Reported Test Anxiety Friction", "value": "-42%" },
+        { "label": "Session Submission Loss", "value": "Zero" }
+      ],
+      "overview": {
+        "problem": "University examinations present peak cognitive stress. The legacy system suffered from intimidating interfaces, unconfirmed answer saving, fragile network resilience, and high visual clutter, causing widespread student panic during timed tests.",
+        "solution": "Engineered a distraction-free, accessible assessment environment with persistent auto-save state indicators, an intuitive question matrix navigation sidebar, high-contrast readability, and resilient client-side state caching."
+      },
+      "research": [
+        "Conducted 45 contextual student interviews during mock mid-semester exams to identify stress triggers.",
+        "Observed that 68% of student anxiety stemmed from uncertainty about whether their previous answer was securely committed to the server.",
+        "Synthesized findings into an 'Anxiety-Minimizing Ergonomics' framework: real-time micro-feedback, ambient time-warning states instead of flashing alarms, and prominent question navigation."
+      ],
+      "systemDetails": [
+        "Visual Language: Deep navy (#0F1D36) foundation with digital blue (#2563EB) interactive accents for high-legibility focus without optical fatigue.",
+        "Navigation Matrix: A structured grid permitting students to mark questions for review, jump seamlessly, and verify answered status with clear color-coded states.",
+        "Fail-Safe Architecture: Integrated client-side IndexedDB caching that preserves every keystroke locally in the event of intermittent campus Wi-Fi drops."
+      ],
+      "outcomes": [
+        "Successfully deployed across 15,000+ undergraduate and postgraduate students during university-wide finals.",
+        "Zero data-loss or corrupted submission tickets recorded during the entire examination period.",
+        "Rated 4.8/5.0 in post-exam student usability surveys for interface clarity and calming visual design."
+      ]
+    },
+    {
+      "id": "yen",
+      "name": "Yɛn Egg Co.",
+      "tagline": "Farm-to-table transparency: Empowering poultry farmers with digital harvest scheduling and subscription tracking for urban Ghanaian households.",
+      "category": "agri",
+      "categoryLabel": "AgriTech & Logistics",
+      "domainTag": "AgriTech & Fresh Supply · Tablet/Mobile",
+      "client": "Yɛn Agricultural Logistics",
+      "role": "End-to-End Product & Mobile UX Designer",
+      "timeline": "4 Months · AgriTech & E-Commerce",
+      "image": "assets/images/yen-egg.jpg",
+      "accentColor": "#4E6A55",
+      "paletteDesc": "Earth & Agriculture Palette",
+      "palette": [
+        { "name": "Farm Cream", "hex": "#FBF8F2" },
+        { "name": "Organic Sage", "hex": "#4E6A55" },
+        { "name": "Charcoal Ink", "hex": "#232724" },
+        { "name": "Warm Earth", "hex": "#D4A373" }
+      ],
+      "stats": [
+        { "label": "Repeat Subscription Rate", "value": "3.4x" },
+        { "label": "Saved Daily Per Logistics Driver", "value": "35 min" },
+        { "label": "Harvest Batch Traceability", "value": "100%" }
+      ],
+      "overview": {
+        "problem": "Poultry farmers in Ghana historically relied on manual phone calls and informal messaging to coordinate egg distribution. This caused delivery delays, spoilage, unpredictable harvest forecasting, and opaque pricing for urban consumers and bakeries.",
+        "solution": "Created an organic, human-centric agricultural platform connecting local farmers directly with recurring household and commercial subscribers. Features harvest calendar schedules, freshness batch tracking, and intelligent dispatch routes."
+      },
+      "research": [
+        "Shadowed logistics drivers across distribution routes between rural poultry coops and urban hubs in Sunyani and Kumasi.",
+        "Interviewed commercial pastry chefs and household managers to discover subscription delivery pain points.",
+        "Identified that freshness timestamp transparency was the single highest driver of customer brand loyalty."
+      ],
+      "systemDetails": [
+        "Visual Language: Earthy Farm Cream (#FBF8F2) and Organic Sage (#4E6A55) to invoke cleanliness, natural nutrition, and agricultural integrity.",
+        "Harvest Calendar: A touch-optimized visual calendar letting consumers schedule bi-weekly or monthly fresh crate arrivals with 1-tap reorders.",
+        "Driver Fleet View: A high-contrast mobile dashboard engineered for bright outdoor sunlight conditions, displaying route batches and digital delivery confirmations."
+      ],
+      "outcomes": [
+        "3.4x increase in recurring weekly crate subscriptions within the first quarter of deployment.",
+        "Reduced daily route navigation confusion, saving drivers an average of 35 minutes per dispatch cycle.",
+        "Enabled 100% digital traceability from the exact hen coop batch to the consumer's doorstep."
+      ]
+    },
+    {
+      "id": "xleidy",
+      "name": "xLeidy",
+      "tagline": "Bespoke elegance made digital: Integrating interactive anatomy sizing guides with an editorial lookbook to eliminate custom apparel return friction.",
+      "category": "commerce",
+      "categoryLabel": "Bespoke Fashion",
+      "domainTag": "Luxury Lifestyle · Bespoke Tailoring",
+      "client": "xLeidy Atelier",
+      "role": "Brand Identity & Digital Commerce UX Designer",
+      "timeline": "5 Months · Luxury E-commerce & Web Experience",
+      "image": "assets/images/xleidy.jpg",
+      "accentColor": "#D98C9A",
+      "paletteDesc": "Bespoke Atelier System",
+      "palette": [
+        { "name": "Night Navy", "hex": "#131926" },
+        { "name": "Dusty Rose", "hex": "#D98C9A" },
+        { "name": "Soft Blush", "hex": "#F7E8EB" },
+        { "name": "Pure White", "hex": "#FFFFFF" }
+      ],
+      "stats": [
+        { "label": "Tailoring Sizing Return Rate", "value": "-68%" },
+        { "label": "Avg. Editorial Lookbook Engagement", "value": "4.2 min" },
+        { "label": "Cart-to-Checkout Conversion", "value": "+38%" }
+      ],
+      "overview": {
+        "problem": "Bespoke fashion commerce experiences high returns (upwards of 45%) because standard S/M/L sizing fails on custom-tailored African luxury silhouettes, and customers struggle to measure themselves accurately at home.",
+        "solution": "Designed an interactive atelier experience featuring an illustrated, step-by-step anatomy measurement guide, tactile fabric tactile viewports, and an editorial lookbook that converts inspiration directly into custom-tailored orders."
+      },
+      "research": [
+        "Conducted in-depth interviews with 30 bespoke fashion clients regarding online sizing hesitation and fitting room fears.",
+        "Audited 12 international and regional luxury e-commerce platforms to identify gaps between ready-to-wear and bespoke customization.",
+        "Discovered that visual anatomical measurement prompts with real-time validation reduced input errors by 74%."
+      ],
+      "systemDetails": [
+        "Visual Language: Night Navy (#131926) grounding with delicate Dusty Rose (#D98C9A) and Soft Blush (#F7E8EB) accents reflecting contemporary artisanal elegance.",
+        "Interactive Fitting Room: Guided illustration tool showing users exactly where to place their measuring tape with dynamic input bounds checking.",
+        "Editorial Catalog: Magazine-quality editorial layouts with smooth image transitions and instant artisan provenance stories."
+      ],
+      "outcomes": [
+        "68% reduction in sizing alterations and customer garment return inquiries.",
+        "Average user engagement time on the curated lookbook increased to 4.2 minutes.",
+        "Boosted overall cart-to-checkout conversion rate by 38% for the launch season."
+      ]
+    }
+  ],
+  "philosophy": {
+    "eyebrow": "How I Think & Build",
+    "title": "The Method: From ambiguity to intentional clarity.",
+    "subtitle": "Great UX is not decorated at the end; it is synthesized through rigorous inquiry, systems mapping, and iterative validation.",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Inquiry & Immersion",
+        "desc": "I interview real stakeholders, observe behavioral bottlenecks in their native environment, and map the emotional friction points before generating solutions.",
+        "checks": [
+          "Contextual stakeholder interviews",
+          "Cognitive load & anxiety mapping",
+          "Competitive landscape heuristics"
+        ]
+      },
+      {
+        "num": "02",
+        "title": "Information Architecture",
+        "desc": "Structuring data models, navigational hierarchies, and user journeys. My computer science background ensures data flow aligns cleanly with interface logic.",
+        "checks": [
+          "Low-fidelity wireframing & user flows",
+          "Entity relationship & state diagrams",
+          "Error state & edge case anticipation"
+        ]
+      },
+      {
+        "num": "03",
+        "title": "Systemic UI & Tokens",
+        "desc": "Building purposeful design systems with distinct domain personalities. Establishing typography scales, accessible color ratios, and component variables.",
+        "checks": [
+          "Auto-layout design systems in Figma",
+          "WCAG 2.1 AA contrast compliance",
+          "Micro-interaction physics & motion states"
+        ]
+      },
+      {
+        "num": "04",
+        "title": "Validation & Code Hand-off",
+        "desc": "Testing interactive prototypes with users and producing structured developer hand-off specs that minimize implementation ambiguities.",
+        "checks": [
+          "Interactive prototype usability tests",
+          "Design-to-code token alignment",
+          "Post-release user feedback synthesis"
+        ]
+      }
+    ],
+    "manifesto": {
+      "label": "The Studio Standard",
+      "quote": "When deciding between something visually impressive and something clear, choose clarity. Visual identity must elevate human capability, never obscure it.",
+      "author": "— Janette Amoatemaa Sarfo"
+    }
+  },
+  "credentials": {
+    "eyebrow": "Technical & Creative Foundation",
+    "title": "Background & Tooling",
+    "subtitle": "A cohesive toolkit combining Figma craftsmanship with modern web programming principles.",
+    "timeline": [
+      {
+        "year": "2023 — Present",
+        "role": "BSc. Computer Science",
+        "org": "University of Energy and Natural Resources (UENR)",
+        "detail": "Focusing on Human-Computer Interaction (HCI), Software Engineering, Data Structures & Web Systems. Applying computational thinking to interface design."
+      },
+      {
+        "year": "2024 — Present",
+        "role": "UI/UX Designer & Design Strategist",
+        "org": "Independent Design Studio & Freelance",
+        "detail": "Collaborating with academic departments, agricultural logistics startups, and lifestyle brands to engineer functional digital experiences and scalable design systems."
+      },
+      {
+        "year": "Ongoing Practice",
+        "role": "Accessibility & Design Systems Research",
+        "org": "Self-Directed Field Studies",
+        "detail": "Exploring high-stress digital ergonomics, offline-first African web performance, and multi-brand token workflows."
+      }
+    ],
+    "skills": [
+      {
+        "title": "UI/UX Design & Systems",
+        "colorClass": "bullet-navy",
+        "badges": [
+          "Figma (Component Variants & Autolayout)",
+          "Design Tokens & Style Guides",
+          "Information Architecture",
+          "Wireframing & Rapid Prototyping",
+          "Micro-Interactions & Transitions",
+          "Design Audits & Heuristic Evaluation"
+        ]
+      },
+      {
+        "title": "Research & Product Strategy",
+        "colorClass": "bullet-rose",
+        "badges": [
+          "Qualitative User Interviews",
+          "Usability Testing & Task Analysis",
+          "User Personas & Journey Maps",
+          "Cognitive Load Reduction",
+          "Accessibility (WCAG 2.1 AA)",
+          "Stakeholder Alignment"
+        ]
+      },
+      {
+        "title": "CS & Web Technologies",
+        "colorClass": "bullet-periwinkle",
+        "badges": [
+          "HTML5 & Semantic Web",
+          "Modern CSS (Variables, Flexbox, Grid)",
+          "JavaScript (ES6+)",
+          "Git & Version Control",
+          "Responsive Web Design",
+          "Component State Logic"
+        ]
+      }
+    ]
+  },
+  "sectionsVisibility": {
+    "hero": true,
+    "about": true,
+    "work": true,
+    "philosophy": true,
+    "credentials": true,
+    "contact": true
+  }
+}

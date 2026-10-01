@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio CMS — Janette Amoatemaa Sarfo Portfolio Dashboard</title>
+  <meta name="description" content="Visual Content Management System for Janette Amoatemaa Sarfo's UI/UX Portfolio. Easily add, edit, or remove projects, pictures, text, and sections.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2317233C'/><text x='50%' y='65%' font-family='sans-serif' font-size='50' font-weight='bold' fill='%23D98C9A' text-anchor='middle'>CMS</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+  <!-- Toast Notification -->
+  <div id="dashToast" class="dash-toast" role="status" aria-live="polite"></div>
+
+  <!-- DASHBOARD WRAPPER -->
+  <div class="dash-layout">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="dash-sidebar">
+      <div class="dash-brand">
+        <div class="dash-brand-icon">JS</div>
+        <div>
+          <h1 class="dash-brand-title">Studio CMS</h1>
+          <span class="dash-brand-sub">Portfolio Visual Manager</span>
+        </div>
+      </div>
+
+      <nav class="dash-nav" aria-label="Dashboard Sections">
+        <button type="button" class="dash-nav-item active" data-tab="general">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>General &amp; Profile</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="hero">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Hero &amp; Portrait</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="about">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>About &amp; Pillars</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="projects">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          <span>Selected Works (Projects)</span>
+          <span class="nav-badge" id="projectCountBadge">3</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="philosophy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span>Philosophy &amp; Process</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="credentials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>Background &amp; Skills</span>
+        </button>
+
+        <button type="button" class="dash-nav-item" data-tab="visibility">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>Section Visibility</span>
+        </button>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <a href="../index.html" target="_blank" class="dash-btn dash-btn--outline w-full" id="viewLivePortfolioBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Open Live Portfolio</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dash-main">
+      <!-- TOP ACTION BAR -->
+      <header class="dash-topbar">
+        <div class="topbar-left">
+          <h2 class="topbar-title" id="currentSectionTitle">General &amp; Profile Settings</h2>
+          <span class="topbar-status" id="saveStatusIndicator">
+            <span class="status-dot-green"></span> Live sync active
+          </span>
+        </div>
+
+        <div class="topbar-actions">
+          <button type="button" class="dash-btn dash-btn--secondary" id="resetDefaultsBtn" title="Reset all portfolio data to factory defaults">
+            <span>Reset Defaults</span>
+          </button>
+
+          <button type="button" class="dash-btn dash-btn--secondary" id="importJsonBtn" title="Import JSON backup">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Import JSON</span>
+          </button>
+          <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+
+          <button type="button" class="dash-btn dash-btn--secondary" id="exportJsonBtn" title="Download updated portfolio-data.json for Git commit">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span>Download JSON</span>
+          </button>
+
+          <button type="button" class="dash-btn dash-btn--primary" id="saveAllBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <span>Publish Changes</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT PANELS -->
+      <div class="dash-content-container">
+
+        <!-- PANEL 1: GENERAL & PROFILE -->
+        <section class="dash-panel active" id="panel-general">
+          <div class="panel-card">
+            <h3 class="panel-card-title">Brand Identity &amp; Contact</h3>
+            <p class="panel-card-sub">Core designer information displayed across headers, metadata, and contact points.</p>
+
+            <div class="form-grid-2">
+              <div class="dash-form-group">
+                <label for="brandNameInput" class="dash-label">Full Name</label>
+                <input type="text" id="brandNameInput" class="dash-input" placeholder="e.g. Janette Amoatemaa Sarfo">
+              </div>
+
+              <div class="dash-form-group">
+                <label for="brandMonogramInput" class="dash-label">Monogram / Logo Initials</label>
+                <input type="text" id="brandMonogramInput" class="dash-input" placeholder="e.g. JS" maxlength="4">
+              </div>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="roleTagInput" class="dash-label">Primary Role / Subtitle</label>
+              <input type="text" id="roleTagInput" class="dash-input" placeholder="e.g. UI/UX Designer · Computer Science Student">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="dash-form-group">
+                <label for="contactEmailInput" class="dash-label">Primary Inquiries Email</label>
+                <input type="email" id="contactEmailInput" class="dash-input" placeholder="e.g. janette.sarfo.design@gmail.com">
+              </div>
+
+              <div class="dash-form-group">
+                <label for="locationInput" class="dash-label">Location &amp; Timezone Label</label>
+                <input type="text" id="locationInput" class="dash-input" placeholder="e.g. Ghana (GMT)">
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="dash-form-group">
+                <label for="availabilityTextInput" class="dash-label">Availability Badge Text</label>
+                <input type="text" id="availabilityTextInput" class="dash-input" placeholder="e.g. Available for 2026/2027">
+              </div>
+
+              <div class="dash-form-group">
+                <label for="isAvailableSelect" class="dash-label">Availability Status Light</label>
+                <select id="isAvailableSelect" class="dash-input">
+                  <option value="true">🟢 Active (Green pulsating dot)</option>
+                  <option value="false">⚪ Booked / Inactive</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Social &amp; Professional Links</h3>
+                <p class="panel-card-sub">Channels displayed in the footer and contact visual break.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addSocialBtn">+ Add Channel</button>
+            </div>
+            <div id="socialsListContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 2: HERO & PORTRAIT -->
+        <section class="dash-panel" id="panel-hero">
+          <div class="panel-card">
+            <h3 class="panel-card-title">Hero Section Content</h3>
+            <p class="panel-card-sub">The opening visual and statement of your Warm Digital Editorial portfolio.</p>
+
+            <div class="dash-form-group">
+              <label for="heroBadgeInput" class="dash-label">Hero Pill Badge</label>
+              <input type="text" id="heroBadgeInput" class="dash-input" placeholder="UI/UX Designer · Computer Science Student">
+            </div>
+
+            <div class="dash-form-group">
+              <label for="heroHeadlineInput" class="dash-label">Hero Headline</label>
+              <textarea id="heroHeadlineInput" class="dash-input dash-textarea" rows="2" placeholder="I think deeply about people, systems, and experiences..."></textarea>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="heroLeadInput" class="dash-label">Introductory Lead Paragraph</label>
+              <textarea id="heroLeadInput" class="dash-input dash-textarea" rows="3" placeholder="Welcome to my personal studio space..."></textarea>
+            </div>
+          </div>
+
+          <!-- Hero Portrait Image Manager -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">Hero Portrait Picture</h3>
+            <p class="panel-card-sub">Upload a new picture or select an existing studio photo.</p>
+
+            <div class="image-uploader-grid">
+              <div class="image-preview-frame">
+                <img id="heroPortraitPreview" src="../assets/images/janette-portrait.jpg" alt="Portrait preview" class="preview-img">
+              </div>
+
+              <div class="image-uploader-controls">
+                <div class="dash-form-group">
+                  <label class="dash-label">Upload New Picture from Device</label>
+                  <input type="file" id="heroPortraitFileInput" accept="image/*" class="dash-file-input">
+                  <span class="input-helper">Supports JPG, PNG, WEBP. Converted instantly for local preview &amp; storage.</span>
+                </div>
+
+                <div class="dash-form-group">
+                  <label for="heroPortraitUrlInput" class="dash-label">Or Image File Path / Web URL</label>
+                  <input type="text" id="heroPortraitUrlInput" class="dash-input" placeholder="assets/images/janette-portrait.jpg">
+                </div>
+
+                <div class="preset-images-group">
+                  <span class="preset-label">Preset studio options:</span>
+                  <button type="button" class="dash-btn dash-btn--xs dash-btn--outline preset-hero-btn" data-src="assets/images/janette-portrait.jpg">Studio Portrait (Default)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Metrics & Floating Tag -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">Hero Metrics &amp; Floating Focus Card</h3>
+
+            <div class="form-grid-2">
+              <div class="dash-form-group">
+                <label for="floatingSubInput" class="dash-label">Floating Card Label</label>
+                <input type="text" id="floatingSubInput" class="dash-input" placeholder="Focus Area">
+              </div>
+              <div class="dash-form-group">
+                <label for="floatingTitleInput" class="dash-label">Floating Card Title</label>
+                <input type="text" id="floatingTitleInput" class="dash-input" placeholder="Design Systems & Cognitive Ergonomics">
+              </div>
+            </div>
+
+            <div class="panel-card-header" style="margin-top: 16px;">
+              <div>
+                <h4 class="sub-heading">Metrics Stat Counters (3 displayed below Hero CTA)</h4>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addMetricBtn">+ Add Metric</button>
+            </div>
+            <div id="metricsListContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Studio Marquee Ribbon -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">Studio Marquee Ribbon Keywords</h3>
+            <p class="panel-card-sub">The sliding ticker beneath the hero section.</p>
+            <div class="dash-form-group">
+              <label for="marqueeItemsInput" class="dash-label">Keywords (Comma-separated)</label>
+              <textarea id="marqueeItemsInput" class="dash-input dash-textarea" rows="2" placeholder="Interaction Architecture, User Research, Design Systems, Accessible Academic Systems..."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 3: ABOUT & PILLARS -->
+        <section class="dash-panel" id="panel-about">
+          <div class="panel-card">
+            <h3 class="panel-card-title">About Section Headlines</h3>
+            <div class="form-grid-2">
+              <div class="dash-form-group">
+                <label for="aboutEyebrowInput" class="dash-label">Eyebrow Tag</label>
+                <input type="text" id="aboutEyebrowInput" class="dash-input" placeholder="About The Designer">
+              </div>
+              <div class="dash-form-group">
+                <label for="aboutBadgeInput" class="dash-label">Card Badge (Gold)</label>
+                <input type="text" id="aboutBadgeInput" class="dash-input" placeholder="Creative Profile">
+              </div>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="aboutTitleInput" class="dash-label">Section Title</label>
+              <input type="text" id="aboutTitleInput" class="dash-input" placeholder="Where human empathy meets algorithmic clarity.">
+            </div>
+
+            <div class="dash-form-group">
+              <label for="aboutSubtitleInput" class="dash-label">Section Subtitle</label>
+              <input type="text" id="aboutSubtitleInput" class="dash-input" placeholder="A creative studio grounded in user advocacy and technical feasibility.">
+            </div>
+
+            <div class="dash-form-group">
+              <label for="aboutHeadlineInput" class="dash-label">Bio Card Headline</label>
+              <textarea id="aboutHeadlineInput" class="dash-input dash-textarea" rows="2"></textarea>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="aboutBio1Input" class="dash-label">Bio Paragraph 1</label>
+              <textarea id="aboutBio1Input" class="dash-input dash-textarea" rows="3"></textarea>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="aboutBio2Input" class="dash-label">Bio Paragraph 2 (CS &amp; Engineering Focus)</label>
+              <textarea id="aboutBio2Input" class="dash-input dash-textarea" rows="3"></textarea>
+            </div>
+          </div>
+
+          <!-- Personal Values -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Personal Design Values</h3>
+                <p class="panel-card-sub">The 3 core philosophies listed inside the bio card.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addValueBtn">+ Add Value</button>
+            </div>
+            <div id="valuesListContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Three Core Pillars -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Foundational Pillars (Right Column)</h3>
+                <p class="panel-card-sub">Computer Science discipline, UX research, and interface craft.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addPillarBtn">+ Add Pillar</button>
+            </div>
+            <div id="pillarsListContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 4: SELECTED WORKS & PROJECTS -->
+        <section class="dash-panel" id="panel-projects">
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Portfolio Projects &amp; Case Studies</h3>
+                <p class="panel-card-sub">Add new projects, update screenshots, edit bespoke color systems, and manage full case studies.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--primary" id="addNewProjectBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Add New Project</span>
+              </button>
+            </div>
+
+            <!-- Project Cards List -->
+            <div id="projectsListContainer" class="project-manager-grid">
+              <!-- Dynamically populated project tiles -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 5: PHILOSOPHY & PROCESS -->
+        <section class="dash-panel" id="panel-philosophy">
+          <div class="panel-card">
+            <h3 class="panel-card-title">Philosophy Section Header &amp; Manifesto</h3>
+            <div class="dash-form-group">
+              <label for="philTitleInput" class="dash-label">Section Title</label>
+              <input type="text" id="philTitleInput" class="dash-input">
+            </div>
+            <div class="dash-form-group">
+              <label for="philSubtitleInput" class="dash-label">Section Subtitle</label>
+              <input type="text" id="philSubtitleInput" class="dash-input">
+            </div>
+
+            <hr class="dash-divider">
+
+            <h4 class="sub-heading">Studio Manifesto Quote Banner</h4>
+            <div class="dash-form-group">
+              <label for="manifestoLabelInput" class="dash-label">Manifesto Label (Gold)</label>
+              <input type="text" id="manifestoLabelInput" class="dash-input" placeholder="The Studio Standard">
+            </div>
+            <div class="dash-form-group">
+              <label for="manifestoQuoteInput" class="dash-label">Quote Text</label>
+              <textarea id="manifestoQuoteInput" class="dash-input dash-textarea" rows="2"></textarea>
+            </div>
+            <div class="dash-form-group">
+              <label for="manifestoAuthorInput" class="dash-label">Attribution / Author</label>
+              <input type="text" id="manifestoAuthorInput" class="dash-input" placeholder="— Janette Amoatemaa Sarfo">
+            </div>
+          </div>
+
+          <!-- 4 Process Steps -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Methodology Process Steps</h3>
+                <p class="panel-card-sub">The structured workflow cards (Inquiry, Architecture, UI Tokens, Validation).</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addProcessStepBtn">+ Add Step</button>
+            </div>
+            <div id="processStepsContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 6: BACKGROUND & SKILLS -->
+        <section class="dash-panel" id="panel-credentials">
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Academic &amp; Experience Timeline</h3>
+                <p class="panel-card-sub">Education and design background history.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addTimelineBtn">+ Add Timeline Item</button>
+            </div>
+            <div id="timelineListContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Skill Groups &amp; Badges</h3>
+                <p class="panel-card-sub">Categories and technical capability tags.</p>
+              </div>
+              <button type="button" class="dash-btn dash-btn--sm dash-btn--outline" id="addSkillGroupBtn">+ Add Skill Group</button>
+            </div>
+            <div id="skillGroupsContainer" class="repeater-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 7: SECTION VISIBILITY -->
+        <section class="dash-panel" id="panel-visibility">
+          <div class="panel-card">
+            <h3 class="panel-card-title">Section Visibility Controls</h3>
+            <p class="panel-card-sub">Toggle entire sections on or off to curate your portfolio on demand.</p>
+
+            <div class="visibility-toggles-grid">
+              <label class="toggle-card">
+                <input type="checkbox" id="toggleHero" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>Hero Section</strong>
+                  <span>Introduction, portrait picture, and metrics</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="toggleAbout" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>About / Designer's Space</strong>
+                  <span>Bio, design values, and 3 foundation pillars</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="toggleWork" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>Selected Work (Projects)</strong>
+                  <span>Project cards, filter tabs, and case study modals</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="togglePhilosophy" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>Design Philosophy &amp; Methodology</strong>
+                  <span>Process steps and the Studio Standard manifesto</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="toggleCredentials" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>Credentials &amp; Foundation</strong>
+                  <span>Academic timeline and skills categories</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="toggleContact" class="toggle-checkbox" checked>
+                <div class="toggle-content">
+                  <strong>Contact Section &amp; Form</strong>
+                  <span>Deep ink navy visual break, email copy, and message form</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- PROJECT EDITOR MODAL / DRAWER -->
+  <div class="dash-modal-backdrop" id="projectEditorModal" aria-hidden="true">
+    <div class="dash-modal-dialog">
+      <div class="dash-modal-header">
+        <div>
+          <h3 class="dash-modal-title" id="projectModalTitle">Edit Project</h3>
+          <span class="dash-modal-sub">Modify project details, pictures, bespoke color system, and case study.</span>
+        </div>
+        <button type="button" class="dash-modal-close" id="closeProjectModalBtn">✕</button>
+      </div>
+
+      <div class="dash-modal-body">
+        <form id="projectForm">
+          <input type="hidden" id="editProjectId">
+
+          <!-- Core Details -->
+          <div class="form-grid-2">
+            <div class="dash-form-group">
+              <label for="projNameInput" class="dash-label">Project Name *</label>
+              <input type="text" id="projNameInput" class="dash-input" required placeholder="e.g. UENR Examination Platform">
+            </div>
+
+            <div class="dash-form-group">
+              <label for="projClientInput" class="dash-label">Client / Organization</label>
+              <input type="text" id="projClientInput" class="dash-input" placeholder="e.g. University of Energy & Natural Resources">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="dash-form-group">
+              <label for="projCategorySelect" class="dash-label">Category Filter Tab *</label>
+              <select id="projCategorySelect" class="dash-input">
+                <option value="academic">Academic Systems</option>
+                <option value="agri">AgriTech &amp; Logistics</option>
+                <option value="commerce">Bespoke Fashion</option>
+                <option value="other">Other Digital Products</option>
+              </select>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="projCategoryLabelInput" class="dash-label">Category Display Label</label>
+              <input type="text" id="projCategoryLabelInput" class="dash-input" placeholder="e.g. Academic Systems">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="dash-form-group">
+              <label for="projRoleInput" class="dash-label">My Role</label>
+              <input type="text" id="projRoleInput" class="dash-input" placeholder="e.g. Lead UI/UX Designer & Information Architect">
+            </div>
+
+            <div class="dash-form-group">
+              <label for="projTimelineInput" class="dash-label">Timeline / Scope</label>
+              <input type="text" id="projTimelineInput" class="dash-input" placeholder="e.g. 6 Months · Academic System Redesign">
+            </div>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projDomainTagInput" class="dash-label">Domain Overlay Tag (Pill on image)</label>
+            <input type="text" id="projDomainTagInput" class="dash-input" placeholder="e.g. Higher Education · Web Platform">
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projTaglineInput" class="dash-label">Tagline / Short Summary *</label>
+            <textarea id="projTaglineInput" class="dash-input dash-textarea" rows="2" required placeholder="Calming high-stakes anxiety: Redesigning academic assessments..."></textarea>
+          </div>
+
+          <!-- Project Screenshot / Visual Manager -->
+          <div class="dash-form-group">
+            <label class="dash-label">Project Mockup / Picture</label>
+            <div class="image-uploader-grid mini">
+              <div class="image-preview-frame mini">
+                <img id="projImagePreview" src="../assets/images/uenr-exam.jpg" alt="Preview" class="preview-img">
+              </div>
+              <div class="image-uploader-controls">
+                <input type="file" id="projImageFileInput" accept="image/*" class="dash-file-input">
+                <input type="text" id="projImageUrlInput" class="dash-input" placeholder="assets/images/uenr-exam.jpg" style="margin-top: 8px;">
+                <span class="input-helper">Upload an image file or type relative path / URL.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bespoke Palette & Accent Color -->
+          <div class="form-grid-2">
+            <div class="dash-form-group">
+              <label for="projAccentColorInput" class="dash-label">Card Accent Border Color</label>
+              <div class="color-picker-row">
+                <input type="color" id="projAccentColorInput" class="dash-color-input" value="#2563EB">
+                <input type="text" id="projAccentColorText" class="dash-input" value="#2563EB">
+              </div>
+            </div>
+
+            <div class="dash-form-group">
+              <label for="projPaletteDescInput" class="dash-label">Color Palette Description</label>
+              <input type="text" id="projPaletteDescInput" class="dash-input" placeholder="e.g. Academic Clarity System">
+            </div>
+          </div>
+
+          <!-- 3 Key Stats -->
+          <h4 class="sub-heading" style="margin-top: 14px;">Key Impact Metrics (3 displayed on card)</h4>
+          <div class="form-grid-3">
+            <div class="dash-form-group">
+              <label class="dash-label">Stat 1 (Value / Label)</label>
+              <input type="text" id="projStat1Val" class="dash-input" placeholder="99.8%" style="margin-bottom: 4px;">
+              <input type="text" id="projStat1Lbl" class="dash-input" placeholder="Completion Rate">
+            </div>
+            <div class="dash-form-group">
+              <label class="dash-label">Stat 2 (Value / Label)</label>
+              <input type="text" id="projStat2Val" class="dash-input" placeholder="-42%" style="margin-bottom: 4px;">
+              <input type="text" id="projStat2Lbl" class="dash-input" placeholder="Reported Anxiety">
+            </div>
+            <div class="dash-form-group">
+              <label class="dash-label">Stat 3 (Value / Label)</label>
+              <input type="text" id="projStat3Val" class="dash-input" placeholder="Zero" style="margin-bottom: 4px;">
+              <input type="text" id="projStat3Lbl" class="dash-input" placeholder="Submission Loss">
+            </div>
+          </div>
+
+          <!-- Case Study Full Content -->
+          <h4 class="sub-heading" style="margin-top: 20px;">Full Case Study Details (Modal Reader)</h4>
+          
+          <div class="dash-form-group">
+            <label for="projProblemInput" class="dash-label">The Problem Statement</label>
+            <textarea id="projProblemInput" class="dash-input dash-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projSolutionInput" class="dash-label">The Strategic Solution</label>
+            <textarea id="projSolutionInput" class="dash-input dash-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projResearchInput" class="dash-label">Research &amp; Insights (One bullet per line)</label>
+            <textarea id="projResearchInput" class="dash-input dash-textarea" rows="3" placeholder="Conducted 45 contextual student interviews...&#10;Observed that 68% of anxiety stemmed from..."></textarea>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projSystemDetailsInput" class="dash-label">Design System &amp; Architecture (One bullet per line)</label>
+            <textarea id="projSystemDetailsInput" class="dash-input dash-textarea" rows="3" placeholder="Visual Language: Deep navy foundation...&#10;Navigation Matrix: A structured grid..."></textarea>
+          </div>
+
+          <div class="dash-form-group">
+            <label for="projOutcomesInput" class="dash-label">Measurable Outcomes &amp; Impact (One bullet per line)</label>
+            <textarea id="projOutcomesInput" class="dash-input dash-textarea" rows="3" placeholder="Successfully deployed across 15,000+ students...&#10;Zero data-loss tickets recorded..."></textarea>
+          </div>
+
+          <div class="modal-form-actions">
+            <button type="button" class="dash-btn dash-btn--secondary" id="cancelProjectBtn">Cancel</button>
+            <button type="submit" class="dash-btn dash-btn--primary">Save Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
