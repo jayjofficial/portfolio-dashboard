@@ -862,3 +862,91 @@ body.dashboard-body {
   box-shadow: 0 0 0 3px rgba(23, 35, 60, 0.08);
   outline: none;
 }
+
+
+/* ==========================================================================
+   GOOGLE MATERIAL DESIGN 3 (M3) DASHBOARD ENHANCEMENTS
+   M3 Navigation Rail Active Indicators, Pill Action Buttons, Outlined Fields
+   ========================================================================== */
+
+/* M3 Navigation Rail Active State Pill Indicator */
+.dash-nav-item {
+  border-radius: 9999px;
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+.dash-nav-item.active {
+  background-color: rgba(217, 140, 154, 0.18);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.dash-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--color-rose);
+}
+
+/* M3 Pill Buttons for Dashboard */
+.btn-publish {
+  border-radius: 9999px;
+  padding: 10px 22px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: var(--color-navy);
+  border: none;
+  box-shadow: 0 1px 3px rgba(23, 35, 60, 0.2), 0 4px 12px rgba(23, 35, 60, 0.12);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-publish:hover {
+  background-color: #27395D;
+  box-shadow: 0 2px 6px rgba(23, 35, 60, 0.25), 0 8px 20px rgba(23, 35, 60, 0.18);
+  transform: translateY(-1px);
+}
+
+.btn-dash-action {
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+/* M3 Surface Card Containers */
+.dash-panel {
+  border-radius: 18px;
+  border: 1px solid rgba(23, 35, 60, 0.08);
+  box-shadow: 0 1px 3px rgba(23, 35, 60, 0.03), 0 4px 16px -2px rgba(23, 35, 60, 0.04);
+}
+
+/* M3 Outlined Form Fields */
+.form-input, .form-textarea, .form-control {
+  border-radius: 12px;
+  border: 1px solid rgba(23, 35, 60, 0.14);
+  padding: 12px 16px;
+  background-color: #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.form-input:focus, .form-textarea:focus, .form-control:focus {
+  border-color: var(--color-navy);
+  border-width: 2px;
+  padding: 11px 15px; /* keep layout stable */
+  box-shadow: 0 0 0 4px rgba(23, 35, 60, 0.06);
+  outline: none;
+}
