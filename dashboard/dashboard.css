@@ -738,74 +738,127 @@ body.dashboard-body {
   transform: translateY(0);
 }
 
-
 /* ==========================================================================
-   ARCHITECTURAL STUDIO CMS ALTERNATIVE (Linear / Notion-Grade Finish)
+   LINEAR / STRIPE TECH PROFESSIONAL CMS THEME
+   Crisp, uncluttered, high-contrast, modern productivity tool styling
    ========================================================================== */
 
+:root {
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+/* Clean, Dark Linear Sidebar */
 .dash-sidebar {
-  background-color: #121B2F;
+  background-color: #0F172A;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .dash-brand {
+  padding: 22px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .dash-brand-icon {
-  background: linear-gradient(135deg, var(--color-rose), #b86b79);
-  box-shadow: 0 4px 12px rgba(217, 140, 154, 0.3);
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background-color: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+.dash-brand-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .dash-nav-item {
   border-radius: 8px;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  transition: all 0.16s ease;
-  position: relative;
+  padding: 10px 14px;
+  color: #94A3B8;
+  transition: all 0.15s ease;
 }
 
 .dash-nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #F8FAFC;
 }
 
 .dash-nav-item.active {
-  background-color: rgba(217, 140, 154, 0.14);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
-  border-left: 3px solid var(--color-rose);
-  padding-left: 11px;
+  font-weight: 600;
 }
 
+/* Stripe-style Floating Dock Topbar */
 .dash-topbar {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(23, 35, 60, 0.08);
+  height: 64px;
+  padding: 0 28px;
 }
 
 .btn-publish {
-  background: linear-gradient(135deg, var(--color-navy), #253961);
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(23, 35, 60, 0.18);
+  background-color: var(--color-navy);
+  border: 1px solid var(--color-navy);
+  color: var(--color-white);
+  border-radius: 7px;
+  padding: 9px 18px;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
+  box-shadow: 0 2px 6px rgba(23, 35, 60, 0.12);
+  transition: all 0.18s ease;
 }
 
 .btn-publish:hover {
-  background: linear-gradient(135deg, var(--color-rose), var(--color-rose-hover));
-  box-shadow: 0 6px 18px rgba(217, 140, 154, 0.35);
+  background-color: #24355A;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 35, 60, 0.18);
 }
 
+.btn-dash-action {
+  border-radius: 7px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid rgba(23, 35, 60, 0.1);
+}
+
+/* Linear-style Form Cards & Inputs */
 .dash-panel {
   background-color: var(--color-white);
   border: 1px solid rgba(23, 35, 60, 0.08);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(23, 35, 60, 0.03);
+  box-shadow: 0 1px 3px rgba(23, 35, 60, 0.03), 0 6px 18px -4px rgba(23, 35, 60, 0.04);
+  padding: 28px;
 }
 
-.form-control:focus, .form-input:focus, .form-textarea:focus {
-  border-color: var(--color-rose);
-  box-shadow: 0 0 0 3px rgba(217, 140, 154, 0.2);
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.form-input, .form-textarea, .form-control {
+  border: 1px solid rgba(23, 35, 60, 0.12);
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  background-color: #FFFFFF;
+  color: var(--color-navy);
+  transition: all 0.15s ease;
+}
+
+.form-input:focus, .form-textarea:focus, .form-control:focus {
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px rgba(23, 35, 60, 0.08);
   outline: none;
 }
