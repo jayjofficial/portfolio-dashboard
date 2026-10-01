@@ -9,9 +9,18 @@
     "location": "Ghana (GMT)",
     "timezone": "Africa/Accra",
     "socials": [
-      { "name": "LinkedIn", "url": "https://linkedin.com" },
-      { "name": "GitHub", "url": "https://github.com" },
-      { "name": "Dribbble", "url": "https://dribbble.com" }
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "name": "Dribbble",
+        "url": "https://dribbble.com"
+      }
     ]
   },
   "hero": {
@@ -24,9 +33,18 @@
       "title": "Design Systems & Cognitive Ergonomics"
     },
     "metrics": [
-      { "value": "3+", "label": "In-depth Design Systems" },
-      { "value": "15k+", "label": "Students Impacted (UENR Portal)" },
-      { "value": "CS + UX", "label": "Dual Architecture Foundation" }
+      {
+        "value": "3+",
+        "label": "In-depth Design Systems"
+      },
+      {
+        "value": "15k+",
+        "label": "Students Impacted (UENR Portal)"
+      },
+      {
+        "value": "CS + UX",
+        "label": "Dual Architecture Foundation"
+      }
     ],
     "marqueeItems": [
       "Interaction Architecture",
@@ -72,7 +90,12 @@
         "title": "Computer Science Discipline",
         "subtitle": "Algorithms, Data Structures & Frontend Systems",
         "desc": "Understanding algorithmic complexity and browser mechanics allows me to design UI components that are frictionless for engineers to implement and performant on low-bandwidth networks.",
-        "tags": ["Component Architecture", "State Modeling", "Responsive Layouts", "WCAG 2.1 AA"]
+        "tags": [
+          "Component Architecture",
+          "State Modeling",
+          "Responsive Layouts",
+          "WCAG 2.1 AA"
+        ]
       },
       {
         "id": "pillar-ux",
@@ -80,7 +103,12 @@
         "title": "User Experience Research",
         "subtitle": "Field Inquiries, Heuristic Audits & Usability Labs",
         "desc": "Uncovering unspoken user frustrations through qualitative observation, contextual inquiry, and usability testing to validate assumptions prior to pixel-level investment.",
-        "tags": ["Contextual Inquiry", "Information Architecture", "Task Flow Analysis", "A/B Usability Testing"]
+        "tags": [
+          "Contextual Inquiry",
+          "Information Architecture",
+          "Task Flow Analysis",
+          "A/B Usability Testing"
+        ]
       },
       {
         "id": "pillar-craft",
@@ -88,7 +116,12 @@
         "title": "Interface Craft & Prototyping",
         "subtitle": "High-Fidelity Systems & Micro-Interactions",
         "desc": "Crafting polished visual systems with distinct character, rigorous auto-layout structures, interactive micro-states, and design token libraries.",
-        "tags": ["Figma Advanced Autolayout", "Design Tokens", "Interactive Prototypes", "Micro-Animations"]
+        "tags": [
+          "Figma Advanced Autolayout",
+          "Design Tokens",
+          "Interactive Prototypes",
+          "Micro-Animations"
+        ]
       }
     ]
   },
@@ -107,15 +140,36 @@
       "accentColor": "#2563EB",
       "paletteDesc": "Academic Clarity System",
       "palette": [
-        { "name": "Deep Navy", "hex": "#0F1D36" },
-        { "name": "Digital Blue", "hex": "#2563EB" },
-        { "name": "Soft Periwinkle", "hex": "#8D9CCB" },
-        { "name": "Clean White", "hex": "#FFFFFF" }
+        {
+          "name": "Deep Navy",
+          "hex": "#0F1D36"
+        },
+        {
+          "name": "Digital Blue",
+          "hex": "#2563EB"
+        },
+        {
+          "name": "Soft Periwinkle",
+          "hex": "#8D9CCB"
+        },
+        {
+          "name": "Clean White",
+          "hex": "#FFFFFF"
+        }
       ],
       "stats": [
-        { "label": "Assessment Completion Rate", "value": "99.8%" },
-        { "label": "Reported Test Anxiety Friction", "value": "-42%" },
-        { "label": "Session Submission Loss", "value": "Zero" }
+        {
+          "label": "Assessment Completion Rate",
+          "value": "99.8%"
+        },
+        {
+          "label": "Reported Test Anxiety Friction",
+          "value": "-42%"
+        },
+        {
+          "label": "Session Submission Loss",
+          "value": "Zero"
+        }
       ],
       "overview": {
         "problem": "University examinations present peak cognitive stress. The legacy system suffered from intimidating interfaces, unconfirmed answer saving, fragile network resilience, and high visual clutter, causing widespread student panic during timed tests.",
@@ -151,15 +205,36 @@
       "accentColor": "#4E6A55",
       "paletteDesc": "Earth & Agriculture Palette",
       "palette": [
-        { "name": "Farm Cream", "hex": "#FBF8F2" },
-        { "name": "Organic Sage", "hex": "#4E6A55" },
-        { "name": "Charcoal Ink", "hex": "#232724" },
-        { "name": "Warm Earth", "hex": "#D4A373" }
+        {
+          "name": "Farm Cream",
+          "hex": "#FBF8F2"
+        },
+        {
+          "name": "Organic Sage",
+          "hex": "#4E6A55"
+        },
+        {
+          "name": "Charcoal Ink",
+          "hex": "#232724"
+        },
+        {
+          "name": "Warm Earth",
+          "hex": "#D4A373"
+        }
       ],
       "stats": [
-        { "label": "Repeat Subscription Rate", "value": "3.4x" },
-        { "label": "Saved Daily Per Logistics Driver", "value": "35 min" },
-        { "label": "Harvest Batch Traceability", "value": "100%" }
+        {
+          "label": "Repeat Subscription Rate",
+          "value": "3.4x"
+        },
+        {
+          "label": "Saved Daily Per Logistics Driver",
+          "value": "35 min"
+        },
+        {
+          "label": "Harvest Batch Traceability",
+          "value": "100%"
+        }
       ],
       "overview": {
         "problem": "Poultry farmers in Ghana historically relied on manual phone calls and informal messaging to coordinate egg distribution. This caused delivery delays, spoilage, unpredictable harvest forecasting, and opaque pricing for urban consumers and bakeries.",
@@ -195,15 +270,36 @@
       "accentColor": "#D98C9A",
       "paletteDesc": "Bespoke Atelier System",
       "palette": [
-        { "name": "Night Navy", "hex": "#131926" },
-        { "name": "Dusty Rose", "hex": "#D98C9A" },
-        { "name": "Soft Blush", "hex": "#F7E8EB" },
-        { "name": "Pure White", "hex": "#FFFFFF" }
+        {
+          "name": "Night Navy",
+          "hex": "#131926"
+        },
+        {
+          "name": "Dusty Rose",
+          "hex": "#D98C9A"
+        },
+        {
+          "name": "Soft Blush",
+          "hex": "#F7E8EB"
+        },
+        {
+          "name": "Pure White",
+          "hex": "#FFFFFF"
+        }
       ],
       "stats": [
-        { "label": "Tailoring Sizing Return Rate", "value": "-68%" },
-        { "label": "Avg. Editorial Lookbook Engagement", "value": "4.2 min" },
-        { "label": "Cart-to-Checkout Conversion", "value": "+38%" }
+        {
+          "label": "Tailoring Sizing Return Rate",
+          "value": "-68%"
+        },
+        {
+          "label": "Avg. Editorial Lookbook Engagement",
+          "value": "4.2 min"
+        },
+        {
+          "label": "Cart-to-Checkout Conversion",
+          "value": "+38%"
+        }
       ],
       "overview": {
         "problem": "Bespoke fashion commerce experiences high returns (upwards of 45%) because standard S/M/L sizing fails on custom-tailored African luxury silhouettes, and customers struggle to measure themselves accurately at home.",
@@ -348,5 +444,13 @@
     "philosophy": true,
     "credentials": true,
     "contact": true
+  },
+  "resume": {
+    "fileName": "",
+    "fileData": "",
+    "fileSize": "",
+    "lastUpdated": "",
+    "externalUrl": "",
+    "action": "modal"
   }
 }

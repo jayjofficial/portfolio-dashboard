@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     projects: 'Selected Works & Case Studies',
     philosophy: 'Philosophy & Methodology',
     credentials: 'Background, Education & Skills',
+    resume: 'Resume / CV Management',
     visibility: 'Section Visibility Controls'
   };
 
@@ -174,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('roleTagInput').value = portfolioData.general?.roleTag || '';
     document.getElementById('contactEmailInput').value = portfolioData.general?.contactEmail || '';
     document.getElementById('locationInput').value = portfolioData.general?.location || '';
-    document.getElementById('availabilityTextInput').value = portfolioData.general?.availabilityText || '';
-    document.getElementById('isAvailableSelect').value = portfolioData.general?.isAvailable !== false ? 'true' : 'false';
+    // availabilityText removed for cleaner header
+    // isAvailableSelect removed for cleaner header
     renderSocialsList();
 
     // B. Hero
@@ -205,6 +206,94 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // D. Projects
     renderProjectsList();
+
+    // H. Resume / CV Initialization
+    function updateResumeDisplay() {
+      const resume = portfolioData.resume || {};
+      const activeTitle = document.getElementById('activeResumeTitle');
+      const activeMeta = document.getElementById('activeMeta') || document.getElementById('activeResumeMeta');
+      const extInput = document.getElementById('resumeExternalUrlInput');
+      const actionSelect = document.getElementById('resumeActionSelect');
+
+      if (extInput) extInput.value = resume.externalUrl || '';
+      if (actionSelect) actionSelect.value = resume.action || 'modal';
+
+      if (resume.fileName && resume.fileData) {
+        if (activeTitle) activeTitle.textContent = 'Custom PDF: ' + resume.fileName;
+        if (activeMeta) activeMeta.textContent = `Size: ${resume.fileSize || 'N/A'} • Uploaded: ${resume.lastUpdated || 'Recently'}`;
+      } else if (resume.externalUrl) {
+        if (activeTitle) activeTitle.textContent = 'External Link: ' + resume.externalUrl;
+        if (activeMeta) activeMeta.textContent = 'Visitors will be directed to this URL upon clicking CV/Resume.';
+      } else {
+        if (activeTitle) activeTitle.textContent = 'Default Studio Web Resume';
+        if (activeMeta) activeMeta.textContent = 'Generated from your portfolio credentials, education, and case studies.';
+      }
+    }
+
+    updateResumeDisplay();
+
+    // Resume file upload handler
+    const resumeFileInput = document.getElementById('resumeFileInput');
+    if (resumeFileInput) {
+      resumeFileInput.onchange = function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 1.2 * 1024 * 1024) {
+          showToast('File size is too large (> 1.2 MB). Please compress your PDF.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          if (!portfolioData.resume) portfolioData.resume = {};
+          portfolioData.resume.fileName = file.name;
+          portfolioData.resume.fileData = evt.target.result;
+          portfolioData.resume.fileSize = (file.size / 1024).toFixed(1) + ' KB';
+          portfolioData.resume.lastUpdated = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          updateResumeDisplay();
+          showToast(`Imported ${file.name}! Click "Publish Changes" to save.`);
+        };
+        reader.readAsDataURL(file);
+      };
+    }
+
+    // Download current resume button
+    const downloadCurrentResumeBtn = document.getElementById('downloadCurrentResumeBtn');
+    if (downloadCurrentResumeBtn) {
+      downloadCurrentResumeBtn.onclick = function() {
+        const resume = portfolioData.resume;
+        if (resume && resume.fileData) {
+          const a = document.createElement('a');
+          a.href = resume.fileData;
+          a.download = resume.fileName || 'Janette_Sarfo_Resume.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          showToast('Downloading ' + (resume.fileName || 'Janette_Sarfo_Resume.pdf'));
+        } else if (resume && resume.externalUrl) {
+          window.open(resume.externalUrl, '_blank');
+        } else {
+          showToast('Using Default Web Resume (no custom PDF uploaded yet).');
+        }
+      };
+    }
+
+    // Remove resume button
+    const removeResumeBtn = document.getElementById('removeResumeBtn');
+    if (removeResumeBtn) {
+      removeResumeBtn.onclick = function() {
+        if (portfolioData.resume) {
+          portfolioData.resume.fileName = '';
+          portfolioData.resume.fileData = '';
+          portfolioData.resume.fileSize = '';
+          portfolioData.resume.lastUpdated = '';
+        }
+        updateResumeDisplay();
+        showToast('Custom PDF removed. Default web resume restored.');
+      };
+    }
+
 
     // E. Philosophy
     document.getElementById('philTitleInput').value = portfolioData.philosophy?.title || '';
@@ -355,7 +444,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   addSocialBtn?.addEventListener('click', () => {
-    if (!portfolioData.general) portfolioData.general = {};
+    if (!portfolioData.general)       // Resume settings
+      if (!portfolioData.resume) portfolioData.resume = {};
+      const resumeExtInput = document.getElementById('resumeExternalUrlInput');
+      const resumeActSelect = document.getElementById('resumeActionSelect');
+      if (resumeExtInput) portfolioData.resume.externalUrl = resumeExtInput.value.trim();
+      if (resumeActSelect) portfolioData.resume.action = resumeActSelect.value;
+
+      portfolioData.general = {};
     if (!portfolioData.general.socials) portfolioData.general.socials = [];
     portfolioData.general.socials.push({ name: 'New Link', url: 'https://' });
     renderSocialsList();
@@ -601,6 +697,94 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm(`Are you sure you want to remove project "${proj.name}"?`)) {
           portfolioData.projects.splice(index, 1);
           renderProjectsList();
+
+    // H. Resume / CV Initialization
+    function updateResumeDisplay() {
+      const resume = portfolioData.resume || {};
+      const activeTitle = document.getElementById('activeResumeTitle');
+      const activeMeta = document.getElementById('activeMeta') || document.getElementById('activeResumeMeta');
+      const extInput = document.getElementById('resumeExternalUrlInput');
+      const actionSelect = document.getElementById('resumeActionSelect');
+
+      if (extInput) extInput.value = resume.externalUrl || '';
+      if (actionSelect) actionSelect.value = resume.action || 'modal';
+
+      if (resume.fileName && resume.fileData) {
+        if (activeTitle) activeTitle.textContent = 'Custom PDF: ' + resume.fileName;
+        if (activeMeta) activeMeta.textContent = `Size: ${resume.fileSize || 'N/A'} • Uploaded: ${resume.lastUpdated || 'Recently'}`;
+      } else if (resume.externalUrl) {
+        if (activeTitle) activeTitle.textContent = 'External Link: ' + resume.externalUrl;
+        if (activeMeta) activeMeta.textContent = 'Visitors will be directed to this URL upon clicking CV/Resume.';
+      } else {
+        if (activeTitle) activeTitle.textContent = 'Default Studio Web Resume';
+        if (activeMeta) activeMeta.textContent = 'Generated from your portfolio credentials, education, and case studies.';
+      }
+    }
+
+    updateResumeDisplay();
+
+    // Resume file upload handler
+    const resumeFileInput = document.getElementById('resumeFileInput');
+    if (resumeFileInput) {
+      resumeFileInput.onchange = function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 1.2 * 1024 * 1024) {
+          showToast('File size is too large (> 1.2 MB). Please compress your PDF.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          if (!portfolioData.resume) portfolioData.resume = {};
+          portfolioData.resume.fileName = file.name;
+          portfolioData.resume.fileData = evt.target.result;
+          portfolioData.resume.fileSize = (file.size / 1024).toFixed(1) + ' KB';
+          portfolioData.resume.lastUpdated = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          updateResumeDisplay();
+          showToast(`Imported ${file.name}! Click "Publish Changes" to save.`);
+        };
+        reader.readAsDataURL(file);
+      };
+    }
+
+    // Download current resume button
+    const downloadCurrentResumeBtn = document.getElementById('downloadCurrentResumeBtn');
+    if (downloadCurrentResumeBtn) {
+      downloadCurrentResumeBtn.onclick = function() {
+        const resume = portfolioData.resume;
+        if (resume && resume.fileData) {
+          const a = document.createElement('a');
+          a.href = resume.fileData;
+          a.download = resume.fileName || 'Janette_Sarfo_Resume.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          showToast('Downloading ' + (resume.fileName || 'Janette_Sarfo_Resume.pdf'));
+        } else if (resume && resume.externalUrl) {
+          window.open(resume.externalUrl, '_blank');
+        } else {
+          showToast('Using Default Web Resume (no custom PDF uploaded yet).');
+        }
+      };
+    }
+
+    // Remove resume button
+    const removeResumeBtn = document.getElementById('removeResumeBtn');
+    if (removeResumeBtn) {
+      removeResumeBtn.onclick = function() {
+        if (portfolioData.resume) {
+          portfolioData.resume.fileName = '';
+          portfolioData.resume.fileData = '';
+          portfolioData.resume.fileSize = '';
+          portfolioData.resume.lastUpdated = '';
+        }
+        updateResumeDisplay();
+        showToast('Custom PDF removed. Default web resume restored.');
+      };
+    }
+
           showToast(`Project "${proj.name}" removed.`);
         }
       });
@@ -777,6 +961,94 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderProjectsList();
+
+    // H. Resume / CV Initialization
+    function updateResumeDisplay() {
+      const resume = portfolioData.resume || {};
+      const activeTitle = document.getElementById('activeResumeTitle');
+      const activeMeta = document.getElementById('activeMeta') || document.getElementById('activeResumeMeta');
+      const extInput = document.getElementById('resumeExternalUrlInput');
+      const actionSelect = document.getElementById('resumeActionSelect');
+
+      if (extInput) extInput.value = resume.externalUrl || '';
+      if (actionSelect) actionSelect.value = resume.action || 'modal';
+
+      if (resume.fileName && resume.fileData) {
+        if (activeTitle) activeTitle.textContent = 'Custom PDF: ' + resume.fileName;
+        if (activeMeta) activeMeta.textContent = `Size: ${resume.fileSize || 'N/A'} • Uploaded: ${resume.lastUpdated || 'Recently'}`;
+      } else if (resume.externalUrl) {
+        if (activeTitle) activeTitle.textContent = 'External Link: ' + resume.externalUrl;
+        if (activeMeta) activeMeta.textContent = 'Visitors will be directed to this URL upon clicking CV/Resume.';
+      } else {
+        if (activeTitle) activeTitle.textContent = 'Default Studio Web Resume';
+        if (activeMeta) activeMeta.textContent = 'Generated from your portfolio credentials, education, and case studies.';
+      }
+    }
+
+    updateResumeDisplay();
+
+    // Resume file upload handler
+    const resumeFileInput = document.getElementById('resumeFileInput');
+    if (resumeFileInput) {
+      resumeFileInput.onchange = function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 1.2 * 1024 * 1024) {
+          showToast('File size is too large (> 1.2 MB). Please compress your PDF.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          if (!portfolioData.resume) portfolioData.resume = {};
+          portfolioData.resume.fileName = file.name;
+          portfolioData.resume.fileData = evt.target.result;
+          portfolioData.resume.fileSize = (file.size / 1024).toFixed(1) + ' KB';
+          portfolioData.resume.lastUpdated = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          updateResumeDisplay();
+          showToast(`Imported ${file.name}! Click "Publish Changes" to save.`);
+        };
+        reader.readAsDataURL(file);
+      };
+    }
+
+    // Download current resume button
+    const downloadCurrentResumeBtn = document.getElementById('downloadCurrentResumeBtn');
+    if (downloadCurrentResumeBtn) {
+      downloadCurrentResumeBtn.onclick = function() {
+        const resume = portfolioData.resume;
+        if (resume && resume.fileData) {
+          const a = document.createElement('a');
+          a.href = resume.fileData;
+          a.download = resume.fileName || 'Janette_Sarfo_Resume.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          showToast('Downloading ' + (resume.fileName || 'Janette_Sarfo_Resume.pdf'));
+        } else if (resume && resume.externalUrl) {
+          window.open(resume.externalUrl, '_blank');
+        } else {
+          showToast('Using Default Web Resume (no custom PDF uploaded yet).');
+        }
+      };
+    }
+
+    // Remove resume button
+    const removeResumeBtn = document.getElementById('removeResumeBtn');
+    if (removeResumeBtn) {
+      removeResumeBtn.onclick = function() {
+        if (portfolioData.resume) {
+          portfolioData.resume.fileName = '';
+          portfolioData.resume.fileData = '';
+          portfolioData.resume.fileSize = '';
+          portfolioData.resume.lastUpdated = '';
+        }
+        updateResumeDisplay();
+        showToast('Custom PDF removed. Default web resume restored.');
+      };
+    }
+
     closeProjectModal();
   });
 
@@ -947,14 +1219,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gatherDashboardState() {
     // 1. General
-    portfolioData.general = {
+          // Resume settings
+      if (!portfolioData.resume) portfolioData.resume = {};
+      const resumeExtInput = document.getElementById('resumeExternalUrlInput');
+      const resumeActSelect = document.getElementById('resumeActionSelect');
+      if (resumeExtInput) portfolioData.resume.externalUrl = resumeExtInput.value.trim();
+      if (resumeActSelect) portfolioData.resume.action = resumeActSelect.value;
+
+      portfolioData.general = {
       brandName: document.getElementById('brandNameInput').value.trim(),
       brandMonogram: document.getElementById('brandMonogramInput').value.trim(),
       roleTag: document.getElementById('roleTagInput').value.trim(),
       contactEmail: document.getElementById('contactEmailInput').value.trim(),
       location: document.getElementById('locationInput').value.trim(),
-      availabilityText: document.getElementById('availabilityTextInput').value.trim(),
-      isAvailable: document.getElementById('isAvailableSelect').value === 'true',
+      // availabilityText removed
+      // isAvailable removed
       socials: []
     };
 

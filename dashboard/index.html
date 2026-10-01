@@ -64,6 +64,11 @@
           <span>Background &amp; Skills</span>
         </button>
 
+                <button type="button" class="dash-nav-item" data-tab="resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Resume / CV</span>
+        </button>
+
         <button type="button" class="dash-nav-item" data-tab="visibility">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
           <span>Section Visibility</span>
@@ -150,20 +155,7 @@
               </div>
             </div>
 
-            <div class="form-grid-2">
-              <div class="dash-form-group">
-                <label for="availabilityTextInput" class="dash-label">Availability Badge Text</label>
-                <input type="text" id="availabilityTextInput" class="dash-input" placeholder="e.g. Available for 2026/2027">
-              </div>
-
-              <div class="dash-form-group">
-                <label for="isAvailableSelect" class="dash-label">Availability Status Light</label>
-                <select id="isAvailableSelect" class="dash-input">
-                  <option value="true">🟢 Active (Green pulsating dot)</option>
-                  <option value="false">⚪ Booked / Inactive</option>
-                </select>
-              </div>
-            </div>
+            
           </div>
 
           <div class="panel-card">
@@ -430,6 +422,82 @@
             </div>
             <div id="skillGroupsContainer" class="repeater-container">
               <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 6.5: RESUME / CV MANAGER -->
+        <section class="dash-panel" id="panel-resume">
+          <div class="panel-header">
+            <h2 class="panel-title">Resume / CV Management</h2>
+            <p class="panel-sub">Import, download, or change the official resume accessible on your portfolio.</p>
+          </div>
+
+          <!-- Active Resume Status -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div>
+                <h3 class="panel-card-title">Current Active Resume</h3>
+                <p class="panel-card-sub">What visitors access when clicking "CV / Resume" in your portfolio.</p>
+              </div>
+              <div class="header-actions">
+                <button type="button" class="dash-btn dash-btn--sm dash-btn--primary" id="downloadCurrentResumeBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download Active Resume</span>
+                </button>
+                <button type="button" class="dash-btn dash-btn--sm dash-btn--danger" id="removeResumeBtn" style="margin-left: 8px;">
+                  <span>Remove Custom PDF</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="resume-status-card" style="padding: 16px; background-color: var(--color-ivory); border-radius: 8px; border: 1px solid var(--color-slate-ultralight); margin-top: 12px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 40px; height: 40px; border-radius: 8px; background-color: var(--color-navy); color: var(--color-white); display: flex; align-items: center; justify-content: center;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <div>
+                  <strong id="activeResumeTitle" style="display: block; font-size: 0.95rem; color: var(--color-navy);">Default Studio Web Resume</strong>
+                  <span id="activeResumeMeta" style="font-size: 0.8125rem; color: var(--color-slate);">Generated from your portfolio credentials, education, and case studies.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Import / Upload New Resume File -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">Upload / Import New Resume (PDF)</h3>
+            <p class="panel-card-sub">Upload your latest PDF resume. Recommended max size: ~800 KB.</p>
+
+            <div class="dash-form-group" style="margin-top: 16px;">
+              <label for="resumeFileInput" class="dash-label">Select PDF Document</label>
+              <input type="file" id="resumeFileInput" accept=".pdf,application/pdf" class="dash-file-input">
+              <span class="input-helper">Accepts .pdf format. Uploaded file is stored securely in your portfolio data.</span>
+            </div>
+          </div>
+
+          <!-- External URL Alternative -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">External Resume Link (Optional)</h3>
+            <p class="panel-card-sub">If you host your resume on Google Drive, Notion, or Dropbox, paste the link here.</p>
+
+            <div class="dash-form-group" style="margin-top: 14px;">
+              <label for="resumeExternalUrlInput" class="dash-label">Direct Resume Link / Hosted URL</label>
+              <input type="url" id="resumeExternalUrlInput" class="dash-input" placeholder="https://drive.google.com/file/d/your-resume/view">
+            </div>
+          </div>
+
+          <!-- Portfolio Click Action Behavior -->
+          <div class="panel-card">
+            <h3 class="panel-card-title">Portfolio Button Behavior</h3>
+            <p class="panel-card-sub">Choose what happens when visitors click "CV / Resume" on your portfolio.</p>
+
+            <div class="dash-form-group" style="margin-top: 14px;">
+              <label for="resumeActionSelect" class="dash-label">On-Click Action</label>
+              <select id="resumeActionSelect" class="dash-input">
+                <option value="modal">Open Interactive Web Resume (with Download PDF Button)</option>
+                <option value="direct">Directly Download / Open PDF File in New Tab</option>
+              </select>
             </div>
           </div>
         </section>
